@@ -11,7 +11,7 @@ import time
 
 def initialize_driver():  
     options = Options()
-    options.add_argument("--headless=new")  # en CI sí usamos headless
+    options.add_argument("--headless")  # en CI sí usamos headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
@@ -70,16 +70,21 @@ def buscar_empleado(driver, nombre="Andrea Gutierrez"):
     print("✅ Resultados de búsqueda cargados")
 
 
-def main():  
+# ... (Reemplaza el código del final)
+
+def main():
     driver = initialize_driver()
     try:
         login(driver)
         ir_a_PIM(driver)
-        buscar_empleado(driver, "ANDREA GUTIERREZ")
-        time.sleep(3)
+        buscar_empleado(driver, "Andrea Gutierrez")
+        print("Prueba finalizada con éxito.")
+    except Exception as e:
+        print(f"❌ ¡Ha ocurrido un error durante la prueba!: {e}")
     finally:
+        time.sleep(3)
         driver.quit()
 
-
-if __name__ == '__main__':  
+if __name__ == '__main__':
     main()
+
