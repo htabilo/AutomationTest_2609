@@ -61,7 +61,7 @@ def buscar_id(driver, id="0312"):
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, '//div[@class="oxd-table-body"]'))
     )
-    print("✅ Resultados de búsqueda cargados")
+    print("✅ Resultados de búsqueda cargados OK")
 
 # ... (Reemplaza el código del final)
 def main():
