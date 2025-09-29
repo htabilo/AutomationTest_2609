@@ -45,15 +45,16 @@ def ir_a_PIM(driver):
     )
     print("✅ Employee Information cargado")
 
-def buscar_empleado(driver, nombre="Andrea Gutierrez"):
-    campo_nombre = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Type for hints...']"))
+def buscar_id(driver, id="0312"):
+    campo_id = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located(
+            (By.XPATH, '//label[text()="Employee Id"]/../following-sibling::div/input')
+            )
     )
-    campo_nombre.send_keys(nombre)
-    print(f"✅ Nombre '{nombre}' escrito en Employee Name")
-    time.sleep(2)
-    campo_nombre.send_keys(Keys.ARROW_DOWN)
-    campo_nombre.send_keys(Keys.ENTER)
+    campo_id.clear()
+    campo_id.send_keys(id)
+    print(f"ID '{id}' ingresado en el campo Employee Id")
+
     boton_search = driver.find_element(By.XPATH, '//button[@type="submit"]')
     boton_search.click()
     print("✅ Clic en Search")
@@ -68,7 +69,7 @@ def main():
     try:
         login(driver)
         ir_a_PIM(driver)
-        buscar_empleado(driver, "Andrea Gutierrez")
+        buscar_id(driver,"0312")
         print("Prueba finalizada con éxito.")
     except Exception as e:
         print(f"❌ ¡Ha ocurrido un error durante la prueba!: {e}")
