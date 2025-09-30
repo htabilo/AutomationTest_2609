@@ -45,6 +45,10 @@ def ir_a_PIM(driver):
     )
     print("✅ Employee Information cargado")
 
+
+
+
+
 def buscar_id(driver, id="0312"):
     campo_id = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located(
